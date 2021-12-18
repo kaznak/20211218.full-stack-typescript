@@ -31,3 +31,4 @@ situation:
     - read [this](https://github.com/okonet/lint-staged#how-to-use-lint-staged-in-a-multi-package-monorepo).
 - sort-package-json and prettier would conflict while parallel execution.
     - sort-package-json should be a prettier plugin.
+    - it already is [prettier-plugin-packagejson](https://www.npmjs.com/package/prettier-plugin-packagejson)
