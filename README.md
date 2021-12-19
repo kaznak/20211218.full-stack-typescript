@@ -17,7 +17,7 @@ tools:
 - prettier
 - sort-package-json
 - eslint
-    - with plugins
+  - with plugins
 - lint-staged
 - husky
 
@@ -28,7 +28,7 @@ situation:
 - ESLint would be configured for a specific structure.
   - `"@next/eslint-plugin-next` suppose to be the directory structure of the next.js standard.
 - lerna has a command, `lerna run` , that runs a npm script in each package.
-    - read [this](https://github.com/okonet/lint-staged#how-to-use-lint-staged-in-a-multi-package-monorepo).
+  - read [this](https://github.com/okonet/lint-staged#how-to-use-lint-staged-in-a-multi-package-monorepo).
 - sort-package-json and prettier would conflict while parallel execution.
-    - sort-package-json should be a prettier plugin.
-    - it already is [prettier-plugin-packagejson](https://www.npmjs.com/package/prettier-plugin-packagejson)
+  - sort-package-json should be a prettier plugin.
+  - it already is [prettier-plugin-packagejson](https://www.npmjs.com/package/prettier-plugin-packagejson)
