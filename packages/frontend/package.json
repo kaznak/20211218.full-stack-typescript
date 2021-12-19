@@ -1,4 +1,5 @@
 {
+  "name": "@stack/frontend",
   "private": true,
   "license": "MIT",
   "scripts": {
