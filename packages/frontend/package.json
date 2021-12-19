@@ -4,9 +4,9 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "format": "sort-package-json && prettier --ignore-unknown --write .",
+    "format": "prettier --ignore-unknown --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
-    "prepare": "husky install",
+    "preCommit": "lint-staged",
     "start": "next start",
     "test": "jest",
     "test-all": "yarn lint && yarn type-check && yarn test",
@@ -15,10 +15,6 @@
   "lint-staged": {
     "*.@(ts|tsx|js|jsx)": [
       "yarn lint"
-    ],
-    "package.json": [
-      "sort-package-json",
-      "prettier --write"
     ],
     "*": [
       "prettier --ignore-unknown --write"
