@@ -9,7 +9,7 @@
     "preCommit": "lint-staged",
     "start": "next start",
     "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test",
+    "test-all": "run-p lint type-check test",
     "type-check": "tsc --pretty --noEmit"
   },
   "lint-staged": {
