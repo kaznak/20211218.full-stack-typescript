@@ -3,9 +3,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "format": "run-s format:package.json format:prettier",
-    "format:package.json": "sort-package-json",
-    "format:prettier": "prettier -u -w ."
+    "format": "prettier -u -w ."
   },
   "lint-staged": {
     "*": [
