@@ -7,6 +7,11 @@
     "format:package.json": "sort-package-json",
     "format:prettier": "prettier -u -w ."
   },
+  "lint-staged": {
+    "*": [
+      "prettier --ignore-unknown --write"
+    ]
+  },
   "devDependencies": {
     "husky": "^7.0.4",
     "lerna": "^4.0.0",
