@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "preCommit": "lint-staged",
     "prepare": "husky install",
     "format": "prettier -u -w ."
   },
