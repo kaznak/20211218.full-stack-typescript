@@ -8,6 +8,7 @@
     "format": "prettier --ignore-unknown --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js --ext jsx",
     "preCommit": "lint-staged",
+    "prePush": "run-p type-check",
     "start": "next start",
     "test": "jest",
     "test-all": "run-p lint type-check test",
