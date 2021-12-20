@@ -2,9 +2,16 @@
   "name": "server",
   "version": "0.0.0",
   "description": "> TODO: description",
-  "author": "kaznak <kaznak.at.work@gmail.com>",
   "homepage": "https://github.com/kaznak/20211218.full-stack-typescript#readme",
+  "bugs": {
+    "url": "https://github.com/kaznak/20211218.full-stack-typescript/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaznak/20211218.full-stack-typescript.git"
+  },
   "license": "MIT",
+  "author": "kaznak <kaznak.at.work@gmail.com>",
   "main": "lib/server.js",
   "directories": {
     "lib": "lib",
@@ -13,15 +20,16 @@
   "files": [
     "lib"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaznak/20211218.full-stack-typescript.git"
-  },
   "scripts": {
+    "format": "prettier --ignore-unknown --write .",
+    "preCommit": "lint-staged",
+    "prePush": "true",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "bugs": {
-    "url": "https://github.com/kaznak/20211218.full-stack-typescript/issues"
+  "lint-staged": {
+    "*": [
+      "prettier --ignore-unknown --write"
+    ]
   },
   "devDependencies": {
     "lint-staged": "^12.1.3",
