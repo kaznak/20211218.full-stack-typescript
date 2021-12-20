@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "prePush": "true",
     "preCommit": "lint-staged",
     "prepare": "husky install",
     "format": "prettier -u -w ."
