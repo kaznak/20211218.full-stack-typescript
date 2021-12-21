@@ -4,7 +4,7 @@ import nodeFetch from 'node-fetch'
 import { setupServer } from 'msw/node'
 import { handlers } from './serverHandlers'
 
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://localhost'
 
 const server = setupServer(...handlers(baseUrl))
 // const server = setupServer(...handlers())
