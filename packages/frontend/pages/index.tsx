@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import { fetchJson } from 'lib/fetchJson'
-import type { HelloApiResponse } from 'lib/pages/api/hello'
+import { apiClient } from 'lib/apiClients'
 
 export function Home() {
   return (
@@ -31,7 +30,7 @@ export function Home() {
           className="my-3 px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
           onClick={async () => {
             try {
-              const { name } = await fetchJson<HelloApiResponse>('/api/hello')
+              const { name } = await apiClient.hello.$get()
               window.alert(`api returns: ${name}`)
             } catch (error) {
               console.error('An unexpected error happened:', error)

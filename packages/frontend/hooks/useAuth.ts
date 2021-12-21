@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, FormEvent } from 'react'
 import Router from 'next/router'
 import useSWR from 'swr'
 import { FetchError } from 'lib/fetchJson'
-import type { AuthRequest, AuthApiResponse } from 'lib/pages/api/auth'
+import type { AuthApiRequest, AuthApiResponse } from 'lib/pages/api/auth'
 import { signIn as signInRaw, signOut as signOutRaw } from 'lib/apiClients/auth'
 
 export default function useAuth({
@@ -20,14 +20,14 @@ export default function useAuth({
   }, [data, redirectIfFound, redirectTo])
 
   const signIn = useCallback(
-    async (body: AuthRequest) => mutateAuth(await signInRaw(body)),
+    async (body: AuthApiRequest) => mutateAuth(await signInRaw(body)),
     [mutateAuth]
   )
 
   const signInHandler = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
-      const body: AuthRequest = {
+      const body: AuthApiRequest = {
         email: event.currentTarget.email.value,
       }
       try {
