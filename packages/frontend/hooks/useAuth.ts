@@ -52,7 +52,7 @@ export default function useAuth({
     try {
       signOut()
     } catch (error) {
-      if (error instanceof FetchError) {
+      if (error) {
         setErrorMessage(error.data.message)
       } else {
         console.error('An unexpected error happened:', error)
