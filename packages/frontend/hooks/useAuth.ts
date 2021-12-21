@@ -1,15 +1,15 @@
 import { useState, useEffect, useCallback, FormEvent } from 'react'
 import Router from 'next/router'
-import useSWR from 'swr'
-import { FetchError } from 'lib/fetchJson'
-import type { AuthApiRequest, AuthApiResponse } from 'lib/pages/api/auth'
+import useAspidaSWR from '@aspida/swr'
+import type { AuthApiRequest } from 'lib/pages/api/auth'
 import { signIn as signInRaw, signOut as signOutRaw } from 'lib/apiClients/auth'
+import { apiClient } from 'lib/apiClients'
 
 export default function useAuth({
   redirectTo = undefined,
   redirectIfFound = false,
 } = {}) {
-  const { data, mutate: mutateAuth } = useSWR<AuthApiResponse>('/api/auth')
+  const { data, mutate: mutateAuth } = useAspidaSWR(apiClient.auth)
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
@@ -33,8 +33,8 @@ export default function useAuth({
       try {
         signIn(body)
       } catch (error) {
-        if (error instanceof FetchError) {
-          setErrorMessage(error.data.message)
+        if (error instanceof Error) {
+          setErrorMessage(error.message)
         } else {
           console.error('An unexpected error happened:', error)
         }
