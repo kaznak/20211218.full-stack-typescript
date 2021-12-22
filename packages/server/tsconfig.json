@@ -1,4 +1,3 @@
 {
-  "extends": "../../tsconfig.base.json",
-  "sourceMap": true
+  "extends": "../../tsconfig.base.json"
 }
