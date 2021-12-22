@@ -27,7 +27,7 @@
     "format": "prettier --ignore-unknown --write .",
     "preCommit": "lint-staged",
     "prePush": "true",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest"
   },
   "lint-staged": {
     "*": [
