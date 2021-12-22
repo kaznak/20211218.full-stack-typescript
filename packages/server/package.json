@@ -21,6 +21,8 @@
     "lib"
   ],
   "scripts": {
+    "build": "tsc",
+    "start": "node lib/server.js",
     "format": "prettier --ignore-unknown --write .",
     "preCommit": "lint-staged",
     "prePush": "true",
