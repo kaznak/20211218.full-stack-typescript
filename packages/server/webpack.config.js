@@ -18,8 +18,9 @@ module.exports = {
     extensions: [".ts", ".js"],
   },
   output: {
-    filename: "bundle.js",
+    filename: "index.js",
     path: path.resolve(__dirname, "dist"),
   },
+  externalsPresets: { node: true },
   externals: [nodeExternals()],
 };

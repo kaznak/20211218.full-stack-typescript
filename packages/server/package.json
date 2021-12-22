@@ -23,7 +23,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "lint": "eslint .",
-    "start": "node lib/server.js",
+    "start": "node dist/index.js",
     "format": "prettier --ignore-unknown --write .",
     "preCommit": "lint-staged",
     "prePush": "true",
