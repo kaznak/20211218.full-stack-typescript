@@ -2099,6 +2099,14 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
+frourio@^0.25.1:
+  version "0.25.1"
+  resolved "https://registry.yarnpkg.com/frourio/-/frourio-0.25.1.tgz#e63cebc03b8c2be70426031acc61873dfff02c60"
+  integrity sha512-ycV09xK6/kssWVjXRBszMe+j69fR/bt3S4u/TKEv5mjyMlEteKkUypQHL/bUOL1IJL//alOXlbPNvAmqkCBHQA==
+  dependencies:
+    aspida "^1.7.1"
+    velona "^0.7.0"
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -4433,6 +4441,11 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+velona@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/velona/-/velona-0.7.0.tgz#9f1f5b4c9095959977fcc292f30600866b34ee97"
+  integrity sha512-+lFXKHJxj7mK3OnYKLHGijf+LCPvv8Mphvy3JETAGvKbn2179dQcOxvlYggOzYUfVHSn9kWmerivMZBtz3eN0Q==
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
