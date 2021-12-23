@@ -4,7 +4,7 @@ const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 
 module.exports = {
-  entry: "./lib/server.ts",
+  entry: "./index.ts",
   target: "node",
   module: {
     rules: [
