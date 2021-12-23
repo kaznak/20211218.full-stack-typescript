@@ -8,7 +8,7 @@ import { API_JWT_SECRET, API_BASE_PATH, API_UPLOAD_DIR } from "./envValues";
 import server from "$/$server";
 
 export const init = (serverFactory?: FastifyServerFactory) => {
-  const app = Fastify({ serverFactory });
+  const app = Fastify({ serverFactory, logger: true });
   app.register(helmet);
   app.register(cors);
   app.register(fastifyStatic, {
