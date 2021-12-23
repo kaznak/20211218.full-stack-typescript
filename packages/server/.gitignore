@@ -1,4 +1,6 @@
-/dist/
-/tmp/
-/prisma/migrations/
 $api.ts
+$relay.ts
+$server.ts
+/dist/
+/prisma/migrations/
+/tmp/
