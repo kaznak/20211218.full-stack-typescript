@@ -1,5 +1,5 @@
 // add this to your setupFilesAfterEnv config in jest so it's imported for every test file
-import nodeFetch from 'node-fetch'
+// import nodeFetch from 'node-fetch'
 
 import { setupServer } from 'msw/node'
 import { handlers } from './serverHandlers'
@@ -13,5 +13,6 @@ beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
-// @ts-expect-error for the type difference between `node-fetch` and `typescript/lib/lib.dom.d.ts`.
-global.fetch = (input, init?) => nodeFetch(baseUrl + input, init)
+// // if you use fetch API, the following lines must be commented in.
+// // @ts-expect-error for the type difference between `node-fetch` and `typescript/lib/lib.dom.d.ts`.
+// global.fetch = (input, init?) => nodeFetch(baseUrl + input, init)
