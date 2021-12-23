@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { ApiRoute } from 'lib/apiRoute'
-import type { HelloApiResponse } from 'lib/pages/api/hello'
+import { ApiRoute } from '$/lib/apiRoute'
+import type { HelloApiResponse } from '$/lib/pages/api/hello'
 
 const helloApiRoute = new ApiRoute<HelloApiResponse>()
 

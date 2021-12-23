@@ -1,3 +1,8 @@
+const { pathsToModuleNameMapper } = require('ts-jest')
+// In the following statement, replace `./tsconfig` with the path to your `tsconfig` file
+// which contains the path mapping (ie the `compilerOptions.paths` option):
+const { compilerOptions } = require('./tsconfig')
+
 module.exports = {
   roots: ['<rootDir>'],
   testEnvironment: 'jsdom',
@@ -15,6 +20,7 @@ module.exports = {
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__mocks__/fileMock.js',
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
   },
   setupFilesAfterEnv: ['<rootDir>/test/testUtils/setupEnv.ts'],
 }

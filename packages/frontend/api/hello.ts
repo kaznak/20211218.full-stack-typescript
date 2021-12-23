@@ -1,4 +1,4 @@
-import { HelloApiResponse } from 'lib/pages/api/hello'
+import { HelloApiResponse } from '$/lib/pages/api/hello'
 
 export type Methods = {
   get: {

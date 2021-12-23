@@ -5,7 +5,7 @@ import {
   NextApiHandler,
 } from 'next'
 
-import { sessionOptions } from 'configs/app'
+import { sessionOptions } from '$/configs/app'
 
 export function withSessionRoute(handler: NextApiHandler) {
   return withIronSessionApiRoute(handler, sessionOptions)

@@ -1,7 +1,7 @@
-import { withSessionRoute } from 'lib/withSession'
-import { ApiRoute } from 'lib/apiRoute'
+import { withSessionRoute } from '$/lib/withSession'
+import { ApiRoute } from '$/lib/apiRoute'
 
-import type { AuthApiResponse } from 'lib/pages/api/auth'
+import type { AuthApiResponse } from '$/lib/pages/api/auth'
 
 const loginRoute = new ApiRoute<AuthApiResponse>()
 

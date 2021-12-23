@@ -1,4 +1,4 @@
-import { AuthApiRequest, AuthApiResponse } from 'lib/pages/api/auth'
+import { AuthApiRequest, AuthApiResponse } from '$/lib/pages/api/auth'
 
 export type Methods = {
   get: {

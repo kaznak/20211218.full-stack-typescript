@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, FormEvent } from 'react'
 import Router from 'next/router'
 import useAspidaSWR from '@aspida/swr'
-import type { AuthApiRequest } from 'lib/pages/api/auth'
-import { apiClient } from 'lib/apiClients'
+import type { AuthApiRequest } from '$/lib/pages/api/auth'
+import { apiClient } from '$/lib/apiClients'
 
 export default function useAuth({
   redirectTo = undefined,

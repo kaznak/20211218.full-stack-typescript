@@ -3,8 +3,8 @@ import {
   render,
   fireEvent,
   waitFor,
-} from 'test/testUtils/testingLibraryWrapper'
-import { Home } from 'pages/index'
+} from '$/test/testUtils/testingLibraryWrapper'
+import { Home } from '$/pages/index'
 
 describe('Home page', () => {
   it('matches snapshot', () => {

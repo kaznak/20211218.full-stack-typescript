@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import { apiClient } from 'lib/apiClients'
+import { apiClient } from '$/lib/apiClients'
 
 export function Home() {
   return (
