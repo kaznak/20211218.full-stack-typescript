@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, FormEvent } from 'react'
 import Router from 'next/router'
 import useAspidaSWR from '@aspida/swr'
 import type { AuthApiRequest } from 'lib/pages/api/auth'
-import { signIn as signInRaw, signOut as signOutRaw } from 'lib/apiClients/auth'
 import { apiClient } from 'lib/apiClients'
 
 export default function useAuth({
@@ -20,7 +19,8 @@ export default function useAuth({
   }, [data, redirectIfFound, redirectTo])
 
   const signIn = useCallback(
-    async (body: AuthApiRequest) => mutateAuth(await signInRaw(body)),
+    async (body: AuthApiRequest) =>
+      mutateAuth(await apiClient.auth.$post({ body })),
     [mutateAuth]
   )
 
@@ -44,7 +44,7 @@ export default function useAuth({
   )
 
   const signOut = useCallback(
-    async () => mutateAuth(await signOutRaw()),
+    async () => mutateAuth(await apiClient.auth.$delete()),
     [mutateAuth]
   )
 
