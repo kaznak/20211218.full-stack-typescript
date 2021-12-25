@@ -18,14 +18,29 @@ generator erd {
   output   = "../docs/ERD.svg"
 }
 
+// User
 model User {
-  id         Int    @id @default(autoincrement())
-  email      String
-  screenName String
+  id         String     @id @default(uuid())
+  email      String     @unique
+  screenName String?    @unique
+  icon       String?
+  taskLists  TaskList[]
+}
+
+// Taks
+model TaskList {
+  id     String  @id @default(uuid())
+  tasks  Task[]
+  //
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
 }
 
 model Task {
-  id    Int     @id @default(autoincrement())
-  label String
-  done  Boolean @default(false)
+  id         String    @id @default(uuid())
+  label      String
+  done       Boolean   @default(false)
+  //
+  TaskList   TaskList? @relation(fields: [taskListId], references: [id])
+  taskListId String?
 }
