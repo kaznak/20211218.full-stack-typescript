@@ -13,6 +13,11 @@ generator client {
   output   = "client"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "../docs/ERD.svg"
+}
+
 model User {
   id         Int    @id @default(autoincrement())
   email      String
