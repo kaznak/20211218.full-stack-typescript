@@ -2,5 +2,6 @@ $api.ts
 $relay.ts
 $server.ts
 /dist/
+/prisma/client/
 /prisma/migrations/
 /tmp/

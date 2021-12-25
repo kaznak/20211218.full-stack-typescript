@@ -1,4 +1,4 @@
-import { User } from "$prisma/client";
+import { User } from "$/prisma/client";
 
 type Response = { ok: boolean; auth?: User };
 

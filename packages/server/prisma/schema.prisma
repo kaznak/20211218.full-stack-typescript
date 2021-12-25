@@ -10,10 +10,13 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  output   = "client"
 }
 
 model User {
-  email String @id
+  id         Int    @id @default(autoincrement())
+  email      String
+  screenName String
 }
 
 model Task {
