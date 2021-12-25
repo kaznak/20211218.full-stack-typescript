@@ -25,6 +25,7 @@
     "lint": "eslint .",
     "format": "prettier --ignore-unknown --write .",
     "generate": "run-p generate:*",
+    "generate:aspida": "aspida",
     "generate:prisma": "prisma generate",
     "generate:frourio": "frourio",
     "preCommit": "lint-staged",

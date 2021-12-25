@@ -20,26 +20,34 @@ generator erd {
 
 // User
 model User {
-  id         String     @id @default(uuid())
-  email      String     @unique
-  screenName String?    @unique
-  icon       String?
-  taskLists  TaskList[]
+  id        String     @id @default(uuid()) @map("userId")
+  name      String     @unique @map("userName")
+  email     String
+  icon      String?
+  taskLists TaskList[]
+  updatedAt DateTime   @updatedAt
+
+  @@index([name])
 }
 
 // Taks
 model TaskList {
-  id     String  @id @default(uuid())
-  tasks  Task[]
+  id        String   @id @default(uuid()) @map("taksListId")
+  name      String   @map("taskListName")
+  tasks     Task[]
+  updatedAt DateTime @updatedAt
   //
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+
+  @@unique([userId, name])
 }
 
 model Task {
-  id         String    @id @default(uuid())
+  id         String    @id @default(uuid()) @map("taskId")
   label      String
   done       Boolean   @default(false)
+  updatedAt  DateTime  @updatedAt
   //
   TaskList   TaskList? @relation(fields: [taskListId], references: [id])
   taskListId String?
