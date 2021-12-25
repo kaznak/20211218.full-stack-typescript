@@ -20,12 +20,13 @@ generator erd {
 
 // User
 model User {
-  id        String     @id @default(uuid()) @map("userId")
-  name      String     @unique @map("userName")
-  email     String
-  icon      String?
-  taskLists TaskList[]
-  updatedAt DateTime   @updatedAt
+  id             String     @id @default(uuid()) @map("userId")
+  name           String     @unique @map("userName")
+  hashedPassword String
+  email          String
+  icon           String?
+  taskLists      TaskList[]
+  updatedAt      DateTime   @updatedAt
 
   @@index([name])
 }
