@@ -22,6 +22,17 @@ export type UserPublicCreateArg = UserArgBase;
 export type UserPublicUpdateByIdArg = Pick<User, "name"> &
   Partial<Omit<UserArgBase, "name">>;
 
+const select = {
+  // prisma selector
+  id: false,
+  name: true,
+  email: true,
+  icon: true,
+  createdAt: true,
+  updatedAt: true,
+  hashedPassword: false,
+};
+
 // Utils
 export function makePasswordHash(
   password: string,
@@ -62,6 +73,7 @@ export const createUser = depend(
   ) => {
     const hashedPassword = makePasswordHash(password, passwordHashConfig);
     const user = await prisma.user.create({
+      select,
       data: { name, email, icon, hashedPassword },
     });
     return user;
@@ -72,7 +84,7 @@ export const createUser = depend(
 export const getUserByName = depend(
   { prisma },
   async ({ prisma }, name: User["name"]) => {
-    const user = await prisma.user.findUnique({ where: { name } });
+    const user = await prisma.user.findUnique({ select, where: { name } });
     return user;
   }
 );
@@ -84,6 +96,7 @@ export const updateUserByName = depend(
     const { name, password } = data;
     const hashedPassword = password ? makePasswordHash(password) : undefined;
     const ret = await prisma.user.update({
+      select,
       where: {
         name,
       },
@@ -98,7 +111,7 @@ export const deleteUserByName = depend(
   { prisma },
   async ({ prisma }, name: User["name"]) => {
     // !!TODO!! delete taskLists
-    const ret = await prisma.user.delete({ where: { name } });
+    const ret = await prisma.user.delete({ select, where: { name } });
     return ret;
   }
 );
