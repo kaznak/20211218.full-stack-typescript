@@ -1,4 +1,4 @@
-import { APP_SECRET } from "$/src/envValues";
+import { APP_SECRET } from "./envValues";
 
 export const passwordHashConfig = {
   digest: "sha256",
