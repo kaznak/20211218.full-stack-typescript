@@ -1,7 +1,7 @@
 import { pbkdf2Sync } from "crypto";
 import { passwordHashConfig } from "$/configs/user";
 import { prisma } from "$/src/prismaClient";
-import { User } from "$/prisma/client";
+import { User } from "$prisma/client";
 import { depend } from "velona";
 
 export type UserPublic = Pick<
@@ -9,7 +9,11 @@ export type UserPublic = Pick<
   "id" | "name" | "email" | "icon" | "createdAt" | "updatedAt"
 >;
 
-type UserArgBase = Omit<UserPublic, "id" | "createdAt" | "updatedAt"> & {
+type UserArgBase = Omit<
+  UserPublic,
+  "id" | "icon" | "createdAt" | "updatedAt"
+> & {
+  icon?: UserPublic["icon"];
   password: string;
 };
 
@@ -19,31 +23,44 @@ export type UserPublicUpdateByIdArg = Pick<User, "name"> &
   Partial<Omit<UserArgBase, "name">>;
 
 // Utils
-export function makePasswordHash(password: string) {
-  const { digest, keylen, iterations, salt } = passwordHashConfig;
+export function makePasswordHash(
+  password: string,
+  config = passwordHashConfig
+) {
+  const { digest, keylen, iterations, salt } = config;
   return `${digest}:${keylen}:${iterations}:${salt}:${pbkdf2Sync(
     password,
     salt,
     iterations,
     keylen,
     digest
-  )}`;
+  ).toString("base64")}`;
 }
 
 export const validateUser = depend(
-  { prisma },
-  async ({ prisma }, name: User["name"], password: string) => {
+  { prisma, passwordHashConfig },
+  async (
+    { prisma, passwordHashConfig },
+    name: User["name"],
+    password: string
+  ) => {
     const user = await prisma.user.findUnique({ where: { name } });
-    return user && (user.hashedPassword = makePasswordHash(password));
+    return (
+      user &&
+      (user.hashedPassword = makePasswordHash(password, passwordHashConfig))
+    );
   }
 );
 
 // Operations
 //// Create
 export const createUser = depend(
-  { prisma },
-  async ({ prisma }, { name, email, icon, password }: UserPublicCreateArg) => {
-    const hashedPassword = makePasswordHash(password);
+  { prisma, passwordHashConfig },
+  async (
+    { prisma, passwordHashConfig },
+    { name, email, icon, password }: UserPublicCreateArg
+  ) => {
+    const hashedPassword = makePasswordHash(password, passwordHashConfig);
     const user = await prisma.user.create({
       data: { name, email, icon, hashedPassword },
     });
@@ -52,7 +69,7 @@ export const createUser = depend(
 );
 
 //// Read
-export const getUserbyName = depend(
+export const getUserByName = depend(
   { prisma },
   async ({ prisma }, name: User["name"]) => {
     const user = await prisma.user.findUnique({ where: { name } });
@@ -61,7 +78,7 @@ export const getUserbyName = depend(
 );
 
 //// Update
-export const updateUserbyName = depend(
+export const updateUserByName = depend(
   { prisma },
   async ({ prisma }, data: UserPublicUpdateByIdArg) => {
     const { name, password } = data;
@@ -81,5 +98,6 @@ export const deleteUserByName = depend(
   { prisma },
   async ({ prisma }, name: User["name"]) => {
     const data = { isActive: false };
+    throw Error("not yet");
   }
 );

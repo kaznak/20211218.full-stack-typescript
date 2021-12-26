@@ -1,4 +1,4 @@
-import { PrismaClient } from "$/prisma/client";
+import { PrismaClient } from "$prisma/client";
 
 declare const global: typeof globalThis & { prisma: PrismaClient };
 

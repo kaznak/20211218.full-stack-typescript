@@ -1,5 +1,5 @@
 import { Length, MaxLength, IsEmail } from "class-validator";
-import { User } from "$/prisma/client";
+import { User } from "$prisma/client";
 
 export class AuthSignIn {
   @Length(8, 16)
