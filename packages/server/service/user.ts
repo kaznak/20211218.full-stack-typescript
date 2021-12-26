@@ -97,7 +97,8 @@ export const updateUserByName = depend(
 export const deleteUserByName = depend(
   { prisma },
   async ({ prisma }, name: User["name"]) => {
-    const data = { isActive: false };
-    throw Error("not yet");
+    // !!TODO!! delete taskLists
+    const ret = await prisma.user.delete({ where: { name } });
+    return ret;
   }
 );
