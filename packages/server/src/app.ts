@@ -4,7 +4,7 @@ import helmet from "fastify-helmet";
 import cors from "fastify-cors";
 import fastifyStatic from "fastify-static";
 import fastifyJwt from "fastify-jwt";
-import { API_JWT_SECRET, API_BASE_PATH } from "./envValues";
+import { API_JWT_SECRET, API_BASE_PATH } from "$/configs/envValues";
 import server from "$/$server";
 
 export const init = (serverFactory?: FastifyServerFactory) => {

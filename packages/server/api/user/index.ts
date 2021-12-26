@@ -1,1 +1,8 @@
-export type Methods = Record<string, never>;
+import { UserPublic } from "$/service/user";
+
+export type Methods = {
+  put: {
+    reqBody: Omit<UserPublic, "id" | "createdAt" | "updatedAt">;
+    resBody: UserPublic;
+  };
+};

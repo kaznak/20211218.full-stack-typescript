@@ -37,6 +37,7 @@ model User {
 // Taks
 model TaskList {
   id        String   @id @default(uuid()) @map("taksListId")
+  isActive  Boolean  @default(true)
   name      String   @map("taskListName")
   tasks     Task[]
   createdAt DateTime @updatedAt
@@ -50,6 +51,7 @@ model TaskList {
 
 model Task {
   id         String    @id @default(uuid()) @map("taskId")
+  isActive   Boolean   @default(true)
   label      String
   done       Boolean   @default(false)
   createdAt  DateTime  @updatedAt
